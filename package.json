@@ -21,7 +21,11 @@
   "homepage": "https://github.com/Deadlyforce/startup#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-minify-css": "^1.2.4",
     "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.4.1"
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-util": "^3.0.8"
   }
 }

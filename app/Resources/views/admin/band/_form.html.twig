@@ -1,0 +1,13 @@
+{{ form_start(bandForm) }}
+    {{ form_row(bandForm.name) }}
+    {{ form_row(bandForm.subGenre) }}
+{#    {{ form_row(bandForm.speciesCount, {
+        'label': 'Number of Species'
+    }) }}#}
+    {{ form_row(bandForm.funFact) }}
+    {{ form_row(bandForm.isPublished) }}
+    {{ form_row(bandForm.firstDiscoveredAt) }}
+
+    <button type="submit" class="btn btn-primary" formnovalidate>Save</button>
+{{ form_end(bandForm) }}
+

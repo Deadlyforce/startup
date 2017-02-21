@@ -1,0 +1,20 @@
+AppBundle\Entity\Band:
+    band_{1..10}:
+        name: <band()>
+        subGenre: '@subgenre_*'
+        funFact: <sentence()>
+        isPublished: <boolean(75)>
+        firstDiscoveredAt: <dateTimeBetween('-200 years', 'now')>
+        
+AppBundle\Entity\SubGenre:
+    subgenre_{1..10}:
+        # use some fake data for this
+        name: <lastName()>
+        
+AppBundle\Entity\User:
+    user_{1..10}:
+        email: norman+<current()>@gmail.com
+        plainPassword: zoubida
+        roles: ['ROLE_ADMIN']
+        
+        

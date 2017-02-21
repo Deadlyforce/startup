@@ -7,31 +7,67 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Entity\Band;
 
+/**
+ * 
+ */
 class BandController extends Controller
 {
+    /**
+     * @Route("/band/new")
+     */
+    public function newAction() 
+    {
+        $band = new Band();
+        $band->setName('Obituary' . rand(1, 100));
+        $band->setSubGenre('Death Metal');
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($band);
+        $em->flush();
+        
+        return new Response('<html><body>Band created!</body></html>');
+    }
+    
+    /**
+     * @Route("/band", name="band_list")
+     */
+    public function listAction() 
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bands = $em->getRepository('AppBundle:Band')->findAllPublished();
+        
+        return $this->render('band/list.html.twig', [
+            'bands' => $bands
+        ]);
+    }
+    
     /**
      * @Route("/band/{bandName}", name="band_show")
      */
     public function showAction( $bandName ) 
     {        
-        $funFact = 'C\'est vraiment *n\'importe quoi!*';
+        $em = $this->getDoctrine()->getManager();
+        $band = $em->getRepository('AppBundle:Band')->findOneBy(['name' => $bandName]);
         
-        $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
-        $key = md5($funFact);
+        if( !$band ) {
+            throw $this->createNotFoundException('Pauvre idiot!...Nothing found');
+        }
         
-        if( $cache->contains($key) ) {
-            $funFact = $cache->fetch($key);
-        } else {
-            sleep(1);
-            $funFact = $this->get('markdown.parser')->transform($funFact);
-            $cache->save( $key, $funFact );
-        }       
-        
-        
+//        $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
+//        $key = md5($funFact);
+//        
+//        if( $cache->contains($key) ) {
+//            $funFact = $cache->fetch($key);
+//        } else {
+//            sleep(1);
+//            $funFact = $this->get('markdown.parser')->transform($funFact);
+//            $cache->save( $key, $funFact );
+//        }       
+                
         return $this->render('band/show.html.twig', [
-            'name' => $bandName,
-            'funFact' => $funFact    
+            'band' => $band    
         ]);
     }
     

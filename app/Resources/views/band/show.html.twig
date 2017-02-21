@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bands{% endblock %}
+{% block title %}{{ band.name }}{% endblock %}
 
 {% block body %}
-    <h1 class="test">The band {{ name }}</h1>
-    <p>{{ funFact|raw }}</p>
+    <h2 class="test">The band {{ band.name }}</h2>
+    
+    <p><span>Subgenre: </span>{{ band.subGenre }}</p>
+    <p><span>Fun fact: </span>{{ band.funFact }}</p>
     
 {#    <div id="js-notes-wrapper"></div>#}
     
@@ -17,14 +19,14 @@
 
         <script type="text/babel" src="{{ asset('js/notes.react.js') }}"></script>#}
         
-        <script type="text/babel">
-{#            var notesUrl = '{{ path('band_show_notes', {'bandName': name}) }}';
+{#        <script type="text/babel">#}
+{#            var notesUrl = '{{ path('band_show_notes', {'bandName': band.name}) }}';
 
             ReactDOM.render(
               <NoteSection url={notesUrl} />,
               document.getElementById('js-notes-wrapper')
             );#}
-        </script>
+{#        </script>#}
     {% endblock %}
 
 {% endblock %}

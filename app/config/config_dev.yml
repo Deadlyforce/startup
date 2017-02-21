@@ -1,5 +1,9 @@
 imports:
     - { resource: config.yml }
+    
+parameters:
+    # Deactivates the caching for dev environment so we can see the changes
+    cache_type: array
 
 framework:
     router:
@@ -32,3 +36,5 @@ monolog:
 
 #swiftmailer:
 #    delivery_addresses: ['me@example.com']
+
+
