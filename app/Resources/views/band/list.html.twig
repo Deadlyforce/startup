@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" href="{{ asset('css/bands.css') }}" />
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row">
@@ -8,7 +14,7 @@
                     <a href="{{ path('admin_band_new') }}" class="btn btn-primary pull-right">Add <span class="fa fa-plus-circle"></span></a>
                 </div>
 
-                <h1>Bands</h1>
+                <h1 class="bands-title">Bands</h1>
 
                 <table class="table table-striped">
                     <tr>
