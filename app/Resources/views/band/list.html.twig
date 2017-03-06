@@ -3,7 +3,7 @@
 {% block stylesheets %}
     {{ parent() }}
     
-    <link rel="stylesheet" href="{{ asset('css/bands.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bands.css'|asset_version) }}" />
 {% endblock %}
 
 {% block body %}
@@ -14,7 +14,7 @@
                     <a href="{{ path('admin_band_new') }}" class="btn btn-primary pull-right">Add <span class="fa fa-plus-circle"></span></a>
                 </div>
 
-                <h1 class="bands-title">Bands</h1>
+                <h1 class="bands-title"><i class="fa fa-heart"></i>Bands</h1>
 
                 <table class="table table-striped">
                     <tr>

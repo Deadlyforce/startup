@@ -6,8 +6,8 @@
         {% block stylesheets %}
                 {# This line below: added to main.css via gulp and bower #}
 {#            <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" />#} 
-            <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
-            <link rel="stylesheet" type="text/css" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}" />
+{#            <link rel="stylesheet" type="text/css" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}" />#}
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css'|asset_version) }}" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -38,7 +38,7 @@
 {#            <script src="{{ asset('vendor/jquery/jquery-3.1.1.min.js') }}"></script>
             <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
             <script src="{{ asset('js/main.js') }}"></script>#}
-            <script src="{{ asset('js/site.js') }}"></script>
+            <script src="{{ asset('js/site.js'|asset_version) }}"></script>
         {% endblock %}
     </body>
 </html>
